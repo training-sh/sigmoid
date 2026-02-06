@@ -44,7 +44,7 @@ hdfs dfs -mkdir -p /user/hadoop/input-<<your-initial>>
 echo "hello emr hadoop yarn hadoop emr" > wc-<<your-initial>>.txt
 ```
 ```
-hdfs dfs -put wc-<<your-initial>>.txt /user/hadoop/input/
+hdfs dfs -put wc-<<your-initial>>.txt /user/hadoop/input-<<your-initial>>
 ```
 
 Remove output directory if exists
