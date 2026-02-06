@@ -1,12 +1,5 @@
 # Hive
 
-```
-hdfs dfs -ls /user/hadoop/output_wc-gks
-```
-
-```
-hdfs dfs -cat /user/hadoop/output_wc-<<your-initial>>/part-r-00001
-```
 
 ```
 mkdir <<your-initial>>
