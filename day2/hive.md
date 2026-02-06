@@ -27,7 +27,7 @@ hdfs dfs -mkdir -p /bronze-<<your-initial>>/ratings
 hdfs dfs -ls /bronze-<<your-initial>>
 ```
 ```
-cd /home/hadoop/<<your-initial>>/ml-latest-small
+cd ml-latest-small
 ```
 
 ```
