@@ -81,3 +81,74 @@ hdfs dfs -tail /bronze-<<your-initial>>/movies/movies.csv
 ```
 hdfs dfs -head /bronze-<<your-initial>>/movies/movies.csv
 ```
+
+
+
+# Hive
+
+```
+hive
+```
+
+```
+SHOW DATABASES;
+```
+
+```
+
+SELECT current_database();
+```
+
+```
+SHOW TABLES;
+```
+
+```
+CREATE DATABASE IF NOT EXISTS movielens_<<your-initial>>;
+```
+
+```
+SHOW DATABASES;
+```
+
+```
+USE movielens_<<your-initial>>;
+```
+
+```
+SELECT current_database();
+```
+
+```
+CREATE EXTERNAL TABLE IF NOT EXISTS movies_raw (
+  movieId INT,
+  title STRING,
+  genres STRING
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+  "separatorChar" = ",",
+  "quoteChar"     = "\"",
+  "escapeChar"    = "\\"
+)
+STORED AS TEXTFILE
+LOCATION '/bronze-<<your-initial>>/movies';
+```
+
+```
+SELECT * FROM movies_raw LIMIT 5;
+```
+
+```
+SELECT COUNT(*) FROM movies_raw;
+```
+
+```
+SELECT movieId, title
+FROM movies_raw
+WHERE genres LIKE '%Comedy%'
+LIMIT 10
+```
+
+EXIT;
+
