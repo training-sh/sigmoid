@@ -208,6 +208,16 @@ SET hive.exec.dynamic.partition.mode = nonstrict;
 ```
 
 ```
+INSERT INTO TABLE emp_part 
+VALUES
+('Abi',  3000, 'Transport');
+```
+
+```
+select * from emp_part where dept='Transport';
+```
+
+```
 CREATE TABLE emp_stage (
     name STRING,
     dept STRING,
@@ -240,6 +250,7 @@ SELECT
     dept
 FROM emp_stage;
 ```
+
 ```
 SHOW PARTITIONS emp_part;
 ```
