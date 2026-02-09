@@ -5,6 +5,23 @@
 ### Hive Aggregate queries
 
 ```
+ hdfs dfs -ls /
+'''
+
+```
+ hdfs dfs -ls /user
+```
+
+```
+ hdfs dfs -ls /user/hive
+```
+
+```
+hdfs dfs -ls /user/hive/warehouse
+```
+
+
+```
 hive
 ```
 
