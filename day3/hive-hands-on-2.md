@@ -17,6 +17,22 @@
 ```
 
 ```
+ hdfs dfs -ls /user/hive/warehouse/company.db
+```
+
+```
+hdfs dfs -ls /user/hive/warehouse/company.db
+```
+
+```
+hdfs dfs -ls /user/hive/warehouse/company.db/emp_managed
+```
+
+```
+hdfs dfs -cat  /user/hive/warehouse/company.db/emp_managed/000000_0
+```
+
+```
 hdfs dfs -ls /user/hive/warehouse
 ```
 
