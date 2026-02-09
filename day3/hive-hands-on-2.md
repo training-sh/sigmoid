@@ -140,6 +140,15 @@ INSERT OVERWRITE  Yes (remove existing, append again)
 
 ---
 
+# Hive Data Partitions
+
+```
+hive
+```
+
+```
+USE company;
+```
 ```
 CREATE TABLE emp_part (
     name   STRING,
