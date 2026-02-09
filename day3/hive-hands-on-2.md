@@ -6,7 +6,7 @@
 
 ```
  hdfs dfs -ls /
-'''
+```
 
 ```
  hdfs dfs -ls /user
