@@ -192,6 +192,14 @@ VALUES
 ('Kumar', 2000);
 ```
 
+```
+exit;
+```
+
+```
+hdfs dfs -ls /user/hive/warehouse/company.db/emp_part
+```
+
 Dynamic partitions
 
 ```
