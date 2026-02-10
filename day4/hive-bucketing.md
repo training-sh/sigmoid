@@ -116,17 +116,6 @@ sales.db/orders_part_bucketed/
  │    ├── 000001_0.orc
  ```
 
-```
-INSERT INTO sales.orders_part_bucketed PARTITION (order_date)
-SELECT
-  order_id,
-  customer_id,
-  product_id,
-  amount,
-  order_date
-FROM sales.orders_plain;
-```
-
 
 # Insert data into orders_plain
 
@@ -160,6 +149,21 @@ INSERT INTO TABLE sales.orders_plain VALUES
 (1019, 105, 519, DATE '2025-02-05', 400.00),
 (1020, 106, 520, DATE '2025-02-05', 670.30);
 ```
+
+
+Insert into bucketed table
+
+```
+INSERT INTO sales.orders_part_bucketed PARTITION (order_date)
+SELECT
+  order_id,
+  customer_id,
+  product_id,
+  amount,
+  order_date
+FROM sales.orders_plain;
+```
+
 
 Insert into partitioned table
 
