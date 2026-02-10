@@ -170,6 +170,17 @@ TBLPROPERTIES (
 SELECT * FROM ratings_raw LIMIT 5;
 ```
 
+```
+SELECT
+  userId,
+  movieId,
+  rating,
+  from_unixtime(CAST(`timestamp` AS BIGINT)) AS rating_ts
+FROM ratings_raw;
+```
+
+
+
  
 EXIT;
 
