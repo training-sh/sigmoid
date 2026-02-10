@@ -24,11 +24,11 @@ CREATE TABLE sales.orders_plain (
 STORED AS ORC;
 ```
 
-"""
+```
 sales.db/orders_plain/
  ├── 000000_0.orc
  ├── 000001_0.orc
-"""
+```
 
 Table with partition (alredy discussed)
 
@@ -43,11 +43,11 @@ PARTITIONED BY (order_date DATE)
 STORED AS ORC;
 ```
 
-"""
+```
 sales.db/orders_partitioned/
  ├── order_date=2025-02-01/
  ├── order_date=2025-02-02/
-"""
+```
 
 ## Table WITH BUCKET only (no partition)
 
