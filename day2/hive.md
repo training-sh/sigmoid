@@ -181,6 +181,42 @@ FROM ratings_raw;
 
 
 
+Create Silver Table for Ratings
+
+```
+SET hive.enforce.bucketing = true;
+SET hive.exec.dynamic.partition = true;
+SET hive.exec.dynamic.partition.mode = nonstrict;
+```
+
+```
+CREATE TABLE ratings_silver (
+  userId     INT,
+  movieId    INT,
+  rating     DOUBLE,
+  rating_ts  TIMESTAMP
+)
+PARTITIONED BY (year INT)
+CLUSTERED BY (movieId) INTO 32 BUCKETS
+STORED AS ORC
+TBLPROPERTIES (
+  "orc.compress" = "SNAPPY"
+);
+```
+
+Bronze to Silver
+```
+INSERT OVERWRITE TABLE ratings_silver
+PARTITION (year)
+SELECT
+  CAST(userId AS INT)     AS userId,
+  CAST(movieId AS INT)   AS movieId,
+  CAST(rating AS DOUBLE) AS rating,
+  from_unixtime(CAST(`timestamp` AS BIGINT)) AS rating_ts,
+  year(from_unixtime(CAST(`timestamp` AS BIGINT))) AS year
+FROM ratings_raw;
+```
+
  
 EXIT;
 
