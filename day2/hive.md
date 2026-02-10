@@ -221,5 +221,18 @@ FROM ratings_raw;
 select * from ratings_silver limit 5;
 ```
 
+Group by and Having
+
+```
+SELECT
+  movieId,
+  COUNT(*)        AS rating_count,
+  AVG(rating)     AS avg_rating
+FROM ratings_silver
+WHERE year >= 2000
+GROUP BY movieId
+HAVING COUNT(*) >= 50;
+```
+
 EXIT;
 
