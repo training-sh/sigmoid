@@ -144,6 +144,32 @@ FROM movies_raw
 WHERE genres LIKE '%Comedy%'
 LIMIT 10
 ```
+Ratings table
 
+```
+CREATE EXTERNAL TABLE IF NOT EXISTS ratings_raw (
+  userId     INT,
+  movieId    INT,
+  rating     DOUBLE,
+  `timestamp` BIGINT
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+  "separatorChar" = ",",
+  "quoteChar"     = "\"",
+  "escapeChar"    = "\\"
+)
+STORED AS TEXTFILE
+LOCATION '/bronze/ratings'
+TBLPROPERTIES (
+  "skip.header.line.count" = "1"
+);
+```
+
+```
+SELECT * FROM ratings_raw LIMIT 5;
+```
+
+ 
 EXIT;
 
