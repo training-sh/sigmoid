@@ -217,6 +217,9 @@ SELECT
 FROM ratings_raw;
 ```
 
- 
+```
+select * from ratings_silver limit 5;
+```
+
 EXIT;
 
