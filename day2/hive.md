@@ -1,13 +1,8 @@
 # Hive
 
+Note, removed your initials from commands.
 
-```
-mkdir <<your-initial>>
-```
 
-```
-cd <<your-initial>>
-```
 
 ```
 wget https://files.grouplens.org/datasets/movielens/ml-latest-small.zip
@@ -18,13 +13,13 @@ unzip ml-latest-small.zip
 ```
 
 ```
-hdfs dfs -mkdir -p /bronze-<<your-initial>>/movies
+hdfs dfs -mkdir -p /bronze/movies
 ```
 ```
-hdfs dfs -mkdir -p /bronze-<<your-initial>>/ratings
+hdfs dfs -mkdir -p /bronze/ratings
 ```
 ```
-hdfs dfs -ls /bronze-<<your-initial>>
+hdfs dfs -ls /bronze
 ```
 ```
 cd ml-latest-small
@@ -35,51 +30,51 @@ ls
 ```
 
 ```
-hdfs dfs -put movies.csv /bronze-<<your-initial>>/movies/
+hdfs dfs -put movies.csv /bronze/movies/
 ```
 
 ```
-hdfs dfs -put ratings.csv /bronze-<<your-initial>>/ratings/
+hdfs dfs -put ratings.csv /bronze/ratings/
 ```
 
 use -f to overwrite if exists
 
 ```
-hdfs dfs -ls /bronze-<<your-initial>>
-hdfs dfs -ls /bronze-<<your-initial>>/movies
-hdfs dfs -ls /bronze-<<your-initial>>/ratings
+hdfs dfs -ls /bronze
+hdfs dfs -ls /bronze/movies
+hdfs dfs -ls /bronze/ratings
 ```
 
 disk size
 ```
-hdfs dfs -du -h /bronze-<<your-initial>>
+hdfs dfs -du -h /bronze
 ```
 first 10 lines 
 ```
-hdfs dfs -cat /bronze-<<your-initial>>/movies/movies.csv | head
+hdfs dfs -cat /bronze/movies/movies.csv | head
 ```
 ```
-hdfs dfs -cat /bronze-<<your-initial>>/movies/movies.csv | head -n 5
+hdfs dfs -cat /bronze/movies/movies.csv | head -n 5
 ```
 last 10 lines
 
 ```
-hdfs dfs -cat /bronze-<<your-initial>>/movies/movies.csv | tail
+hdfs dfs -cat /bronze/movies/movies.csv | tail
 ```
 
 ```
-hdfs dfs -cat /bronze-<<your-initial>>/movies/movies.csv | tail -n 5
+hdfs dfs -cat /bronze/movies/movies.csv | tail -n 5
 ```
 
 last 1 kb of the file, useful for inspecting large file,
 does not read all
 
 ```
-hdfs dfs -tail /bronze-<<your-initial>>/movies/movies.csv
+hdfs dfs -tail /bronze/movies/movies.csv
 ```
 
 ```
-hdfs dfs -head /bronze-<<your-initial>>/movies/movies.csv
+hdfs dfs -head /bronze/movies/movies.csv
 ```
 
 
@@ -104,7 +99,7 @@ SHOW TABLES;
 ```
 
 ```
-CREATE DATABASE IF NOT EXISTS movielens_<<your-initial>>;
+CREATE DATABASE IF NOT EXISTS movielens;
 ```
 
 ```
@@ -112,7 +107,7 @@ SHOW DATABASES;
 ```
 
 ```
-USE movielens_<<your-initial>>;
+USE movielens;
 ```
 
 ```
@@ -132,7 +127,7 @@ WITH SERDEPROPERTIES (
   "escapeChar"    = "\\"
 )
 STORED AS TEXTFILE
-LOCATION '/bronze-<<your-initial>>/movies';
+LOCATION '/bronze/movies';
 ```
 
 ```
